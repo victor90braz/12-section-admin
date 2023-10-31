@@ -28,6 +28,10 @@ class PostController extends Controller
             abort(403);
         }
 
+        if (auth()->user()->username !== 'admin') {
+            abort(403);
+        }
+
         return view('posts.create');
     }
 }
