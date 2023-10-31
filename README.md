@@ -7,7 +7,7 @@
     #### Step 1: Clone the Repository
 
     ```shell
-    git clone https://github.com/victor90braz/11-section.git
+    git clone https://github.com/victor90braz/12-section-admin.git
     ```
 
     #### Step 2: Obtain Your Mailchimp API Key
