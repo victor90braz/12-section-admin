@@ -30,8 +30,13 @@ class PostController extends Controller
 
     public function store()
     {
-        // ddd(request()->all());
+        ddd(request()->all());
+        ddd(request()->file('thumbnail'));
+        $path = request()->file('thumbnail')->store('thumbnails');
 
+        return 'done!' . $path;
+
+        /*
         $attributes = request()->validate([
                 'title' => 'required',
                 'slug' => ['required', Rule::unique('posts', 'slug')],
@@ -45,5 +50,6 @@ class PostController extends Controller
         Post::Create($attributes);
 
         return redirect("/");
+        */
     }
 }
