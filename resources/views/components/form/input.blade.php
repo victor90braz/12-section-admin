@@ -13,8 +13,6 @@
            value="{{ old($name) }}"
     />
 
-    @error($name)
-        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-    @enderror
+    <x-form.error name="{{ $name }}" />
 </div>
 
