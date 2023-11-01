@@ -1,29 +1,35 @@
 @props(['heading'])
 
-<section class="py-8 max-w-4xl mx-auto">
-    <h1 class="text-lg font-bold mb-8 pb-2 border-b">
-        {{ $heading }}
+<section class="mt-8 max-w-md mx-auto">
+    <h1 class="text-left p-2 font-bold text-xl">
+        Publish New Post
     </h1>
 
-    <div class="flex">
-        <aside class="w-48 flex-shrink-0">
-            <h4 class="font-semibold mb-4">Links</h4>
+    <x-panel class="bg-gray-200">
+        <form action="/admin/posts" method="POST" enctype="multipart/form-data">
+            @csrf
 
-            <ul>
-                <li>
-                    <a href="/admin/posts" class="{{ request()->is('admin/posts') ? 'text-blue-500' : '' }}">All Posts</a>
-                </li>
+            <x-form.input name="title"/>
+            <x-form.input name="slug"/>
+            <x-form.input name="thumbnail" type="file"/>
+            <x-form.textarea name="excerpt"/>
+            <x-form.textarea name="body"/>
 
-                <li>
-                    <a href="/admin/posts/create" class="{{ request()->is('admin/posts/create') ? 'text-blue-500' : '' }}">New Post</a>
-                </li>
-            </ul>
-        </aside>
+            <x-form.field>
+                <x-form.label name="category"/>
 
-        <main class="flex-1">
-            <x-panel>
-                {{ $slot }}
-            </x-panel>
-        </main>
-    </div>
+                    <select name="category_id" id="category_id">
+                        @foreach (App\Models\Category::all() as $category)
+                            <option value="{{ $category->id }}" {{ strval(old('category_id')) === strval($category->id) ? 'selected' : '' }}>
+                                {{ ucwords($category->name) }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    <x-form.error name='category'/>
+            </x-form.field>
+
+            <x-submit-button class="mt-3"> publish </x-submit-button>
+        </form>
+    </x-panel>
 </section>
