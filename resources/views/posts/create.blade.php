@@ -8,21 +8,7 @@
             <form action="/admin/posts" method="POST" enctype="multipart/form-data">
                 @csrf
 
-                <label  class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
-                    title
-                </label>
-
-                <input  class="border border-gray-400 p-2 w-full"
-                        type="text"
-                        name="title"
-                        id="title"
-                        required
-                        value="{{ old('title') }}"
-                />
-
-                @error('title')
-                    <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
-                @enderror
+                <x-form.input name="title"/>
 
                 <label  class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="title">
                     slug
