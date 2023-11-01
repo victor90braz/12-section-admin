@@ -41,15 +41,16 @@
                             </button>
                         </x-slot>
 
-                        <x-dropdown-item href="/admin/posts/create">
-                            New Post
-                        </x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts/create">New Post</x-dropdown-item>
+                        <x-dropdown-item href="#">Dashboard</x-dropdown-item>
+                        <x-dropdown-item href="#" x-data="{}" @click.prevent="document.querySelector('#logout-form').submit()">Log Out</x-dropdown-item>
+
+                        <form id="logout-form" action="/logout" method="POST" class="hidden text-xs font-semibold text-blue-500 ml-3">
+                            @csrf
+                            <button type="submit">Log Out </button>
+                        </form>
                     </x-dropdown>
 
-                    <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-3">
-                        @csrf
-                        <button type="submit">Log Out </button>
-                    </form>
                 @else
                     <a href="/register" class="text-xs font-bold uppercase">Register</a>
                     <a href="/login" class="text-xs font-bold uppercase ml-3">Log In</a>
