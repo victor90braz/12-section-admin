@@ -1,8 +1,10 @@
 <x-layout>
-    <section class="px-6 py-8 mt-8">
-        <x-panel class="max-w-sm mx-auto bg-gray-200">
-            <h1 class="text-center font-bold text-xl">Create</h1>
+    <section class="mt-8 max-w-md mx-auto">
+        <h1 class="text-left p-2 font-bold text-xl">
+            Publish New Post
+        </h1>
 
+        <x-panel class="bg-gray-200">
             <form action="/admin/posts" method="POST">
                 @csrf
 
