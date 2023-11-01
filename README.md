@@ -156,4 +156,7 @@ $attributes = request()->validate([
 ]);
 ```
 
+-   add to display html
+    src="{{ asset('storage/' . $post->thumbnail) }}"
+
 This README provides a comprehensive guide to setting up the project, understanding the category selection form, the `store` function, database migration, and updating validation rules.
