@@ -1,12 +1,18 @@
-### Getting Started
+````markdown
+# 12-Section Admin
 
-#### Step 1: Clone the Repository
+12-Section Admin is a web application designed for managing and organizing content across various categories. This README will guide you through the setup, usage, and understanding of the codebase.
+
+## Getting Started
+
+### Step 1: Clone the Repository
 
 ```shell
 git clone https://github.com/victor90braz/12-section-admin.git
 ```
-
 ````
+
+### Category Selection in a Form
 
 ```php
 <section class="px-6 py-8">
@@ -34,30 +40,31 @@ git clone https://github.com/victor90braz/12-section-admin.git
 </section>
 ```
 
-# if a file is required include enctype="multipart/form-data"
+### File Upload with Form Data
 
+If a file is required in the form, make sure to include `enctype="multipart/form-data"`. Here's an example:
+
+```php
 <form action="/admin/posts" method="POST" enctype="multipart/form-data">
-    <label  class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="excerpt">
+    <label class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="thumbnail">
         thumbnail
     </label>
 
-    <input  class="border border-gray-400 p-2 w-full"
-            type="file"
-            name="thumbnail"
-            id="thumbnail"
-            required
-            value="{{ old('thumbnail') }}"
+    <input class="border border-gray-400 p-2 w-full"
+        type="file"
+        name="thumbnail"
+        id="thumbnail"
+        required
+        value="{{ old('thumbnail') }}"
     />
 </form>
+```
 
+### Store Function
 
-````
+The `store` function processes and stores data. The inline comments explain each step within the function.
 
-# Store Function
-
-The `store` function is part of the application's codebase and is responsible for processing and storing data. This README provides inline comments to explain each step within the function.
-
-```php
+````php
 public function store()
 {
     // Use the ddd function to dump and die, showing the contents of the request
@@ -76,13 +83,17 @@ public function store()
     return $path;
 }
 
-- add the link avaibible to public folder
+- Add the symbolic link to make the storage folder available in the public folder
+  - Run the following command in the terminal:
+    ```
+    php artisan storage:link
+    ```
 
-php artisan storage:link
-```
+### Database Migration
 
-# create it to migrate to DB
+To create the necessary database structure, use the following migration:
 
+```php
 <?php
 
 use Illuminate\Database\Migrations\Migration;
@@ -122,6 +133,27 @@ class CreatePostsTable extends Migration
         Schema::dropIfExists('posts');
     }
 }
+````
 
-# run terminal
+Run the following command in the terminal to migrate and seed the database:
+
+```
 php artisan migrate:fresh --seed
+```
+
+### Update Validation Rules
+
+Update the validation rules in the `store` method to include the 'thumbnail' field and ensure it's an image:
+
+```php
+$attributes = request()->validate([
+    'title' => 'required',
+    'thumbnail' => 'required|image', // Ensure it's an image
+    'slug' => ['required', Rule::unique('posts', 'slug')],
+    'excerpt' => 'required',
+    'body' => 'required',
+    'category_id' => ['required', Rule::exists('categories', 'id')]
+]);
+```
+
+This README provides a comprehensive guide to setting up the project, understanding the category selection form, the `store` function, database migration, and updating validation rules.
