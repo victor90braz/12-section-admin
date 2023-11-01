@@ -16,6 +16,14 @@
                         New Post
                     </a>
                 </li>
+
+                <li>
+                    <a  href="#"
+                        class="{{ Str::contains(request()->url(), '/admin/posts/create') ? 'text-blue-500' : '' }}">
+
+                        Dashboard
+                    </a>
+                </li>
             </ul>
         </aside>
 
