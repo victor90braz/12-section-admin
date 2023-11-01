@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Validation\Rule;
 
 class PostController extends Controller
 {
@@ -25,5 +26,23 @@ class PostController extends Controller
     public function create()
     {
         return view('posts.create');
+    }
+
+    public function store()
+    {
+        // ddd(request()->all());
+
+        $attributes = request()->validate([
+                'title' => 'required',
+                'excerpt' => 'required',
+                'body' => 'required',
+                'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+
+        $attributes['user_id'] = auth()->id();  // associate post with user
+
+        Post::Create($attributes);
+
+        return redirect("/");
     }
 }

@@ -56,14 +56,12 @@
                 @enderror
 
                 <section class="px-6 py-8">
-                    <label for="category" class="block mb-2 uppercase font-bold text-xs text-gray-700">
+                    <label for="category_id" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         category
                     </label>
 
-                    <select name="category" id="category">
-                        @php $categories = App\Models\Category::all() @endphp
-
-                        @foreach ($categories as $category)
+                    <select name="category_id" id="category_id">
+                        @foreach (App\Models\Category::all() as $category)
                             <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
                         @endforeach
                     </select>
