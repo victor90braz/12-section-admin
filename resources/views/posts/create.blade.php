@@ -5,7 +5,7 @@
         </h1>
 
         <x-panel class="bg-gray-200">
-            <form action="/admin/posts" method="POST">
+            <form action="/admin/posts" method="POST" enctype="multipart/form-data">
                 @csrf
 
                 <label  class="block mb-2 uppercase font-bold text-xs text-gray-700" for="title">
@@ -40,6 +40,24 @@
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                 @enderror
 
+                <div class="mb-6">
+                    <label  class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="excerpt">
+                        thumbnail
+                    </label>
+
+                    <input  class="border border-gray-400 p-2 w-full"
+                            type="file"
+                            name="thumbnail"
+                            id="thumbnail"
+                            required
+                            value="{{ old('thumbnail') }}"
+                    />
+
+                    @error('thumbnail')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <label  class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="excerpt">
                     excerpt
                 </label>
@@ -60,8 +78,9 @@
                     body
                 </label>
 
-                <textarea class="border border-gray-400 p-2 w-full" name="body" id="body" required>{{ old('body') }}</textarea>
-
+                <textarea class="border border-gray-400 p-2 w-full" name="body" id="body" required>
+                    {{ old('body') }}
+                </textarea>
 
                 @error('body')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>

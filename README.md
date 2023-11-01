@@ -33,4 +33,22 @@ git clone https://github.com/victor90braz/12-section-admin.git
     </section>
 </section>
 ```
+
+# if a file is required include enctype="multipart/form-data"
+
+<form action="/admin/posts" method="POST" enctype="multipart/form-data">
+    <label  class="block mb-2 uppercase font-bold text-xs text-gray-700 mt-3" for="excerpt">
+        thumbnail
+    </label>
+
+    <input  class="border border-gray-400 p-2 w-full"
+            type="file"
+            name="thumbnail"
+            id="thumbnail"
+            required
+            value="{{ old('thumbnail') }}"
+    />
+</form>
+
+
 ````
