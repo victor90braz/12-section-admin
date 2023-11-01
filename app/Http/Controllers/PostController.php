@@ -32,7 +32,7 @@ class PostController extends Controller
     {
         $attributes = request()->validate([
             'title' => 'required',
-            'thumbail' => 'required|image',
+            'thumbnail' => 'required|image',
             'slug' => ['required', Rule::unique('posts', 'slug')],
             'excerpt' => 'required',
             'body' => 'required',
@@ -40,6 +40,7 @@ class PostController extends Controller
         ]);
 
         $attributes['user_id'] = auth()->id();  // associate post with the current user
+        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');  // associate post with thumbnails path image
 
         Post::create($attributes);
 
