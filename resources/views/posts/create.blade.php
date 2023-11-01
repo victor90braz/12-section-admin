@@ -58,13 +58,8 @@
                     body
                 </label>
 
-                <input  class="border border-gray-400 p-2 w-full"
-                        type="text"
-                        name="body"
-                        id="body"
-                        required
-                        value="{{ old('body') }}"
-                />
+                <textarea class="border border-gray-400 p-2 w-full" name="body" id="body" required>{{ old('body') }}</textarea>
+
 
                 @error('body')
                     <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -77,11 +72,13 @@
 
                     <select name="category_id" id="category_id">
                         @foreach (App\Models\Category::all() as $category)
-                            <option value="{{ $category->id }}">{{ ucwords($category->name) }}</option>
+                            <option value="{{ $category->id }}" {{ strval(old('category_id')) === strval($category->id) ? 'selected' : '' }}>
+                                {{ ucwords($category->name) }}
+                            </option>
                         @endforeach
                     </select>
 
-                    @error('category')
+                    @error('category_id')
                         <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                     @enderror
                 </section>
