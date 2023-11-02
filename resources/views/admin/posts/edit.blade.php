@@ -1,5 +1,5 @@
 <x-layout>
-    <x-setting heading="Edit Post">
+    <x-setting :heading=" 'Edit Post' . $post->title ">
         <form action="/admin/posts" method="POST" enctype="multipart/form-data">
             @csrf
 
