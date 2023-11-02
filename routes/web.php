@@ -1,6 +1,7 @@
     <?php
 
-    use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\AdminPostController;
+use App\Http\Controllers\NewsletterController;
     use App\Http\Controllers\PostCommentController;
     use App\Http\Controllers\PostController;
     use App\Http\Controllers\RegisterController;
@@ -24,3 +25,5 @@
 
     Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
     Route::post('/admin/posts', [PostController::class, 'store'])->middleware('admin');
+
+    Route::get('admin/posts/delete', [AdminPostController::class, 'index'])->middleware('admin');
