@@ -1,6 +1,3 @@
-To set a proper width for the image within your form, you can use Bootstrap classes to control the layout. Here's an updated version of your form that includes a proper width for the image:
-
-```html
 <x-layout>
     <x-setting :heading="'Edit Post: ' . $post->title">
         <form action="/admin/posts" method="POST" enctype="multipart/form-data">
@@ -40,6 +37,3 @@ To set a proper width for the image within your form, you can use Bootstrap clas
         </form>
     </x-setting>
 </x-layout>
-```
-
-In this code, I've set a `w-1/4` (25% width) class to the `div` containing the image, which limits the width of the image. I've also added `max-h-40` (maximum height) to control the image's height. You can adjust the values as needed to achieve the desired image size and layout.
