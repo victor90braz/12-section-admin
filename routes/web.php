@@ -27,3 +27,4 @@ use App\Http\Controllers\NewsletterController;
     Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
     Route::post('admin/posts', [PostController::class, 'store'])->middleware('admin');
     Route::get('admin/posts/{post:id}/edit', [PostController::class, 'edit'])->middleware('admin');
+    Route::patch('admin/posts/{post:id}', [PostController::class, 'update'])->middleware('admin');
