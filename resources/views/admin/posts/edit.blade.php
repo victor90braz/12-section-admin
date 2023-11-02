@@ -11,19 +11,17 @@
 
             <x-form.field>
                 <x-form.label name="category"/>
-
-                    <select name="category_id" id="category_id">
-                        @foreach (App\Models\Category::all() as $category)
-                            <option
-                                    value="{{ $category->id }}"
-                                    {{ strval(old('category_id', $post->category_id)) === strval($category->id) ? 'selected' : '' }}
-                            >
-                                {{ ucwords($category->name) }}
-                            </option>
-                        @endforeach
-                    </select>
-
-                    <x-form.error name='category'/>
+                <select name="category_id" id="category_id">
+                    @foreach (App\Models\Category::all() as $category)
+                        <option
+                                value="{{ $category->id }}"
+                                {{ strval(old('category_id', $post->category_id)) === strval($category->id) ? 'selected' : '' }}
+                        >
+                            {{ ucwords($category->name) }}
+                        </option>
+                    @endforeach
+                </select>
+                <x-form.error name='category'/>
             </x-form.field>
 
             <x-submit-button class="mt-3"> publish </x-submit-button>
