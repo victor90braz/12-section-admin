@@ -23,6 +23,17 @@
                                 Edit
                             </a>
                         </td>
+
+                        <td class="px-6 py-4 white-space-nowrap text-right text-sm font-medium">
+                            <form action="/admin/posts/{{ $post->id }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+
+                                <button class="bg-red-500 text-white uppercase font-semibold text-xs py-2 px-8 rounded-2xl hover:bg-red-600">
+                                    Delete
+                                </button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
