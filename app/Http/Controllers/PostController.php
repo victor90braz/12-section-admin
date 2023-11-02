@@ -47,8 +47,10 @@ class PostController extends Controller
         return redirect("/")->withErrors(['category_id' => request('category_id')]);
     }
 
-    public function edit()
+    public function edit(Post $post)
     {
-        return view('admin.posts.edit');
+        return view('admin.posts.edit', [
+            'post' => $post
+        ]);
     }
 }
