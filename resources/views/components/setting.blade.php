@@ -19,9 +19,9 @@
 
                 <li>
                     <a  href="#"
-                        class="{{ Str::contains(request()->url(), '/admin/dashboard') ? 'text-blue-500' : '' }}">
+                        class="{{ Str::contains(request()->url(), '/admin/posts') ? 'text-blue-500' : '' }}">
 
-                        Dashboard
+                        All Posts
                     </a>
                 </li>
             </ul>

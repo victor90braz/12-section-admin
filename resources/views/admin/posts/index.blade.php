@@ -1,5 +1,4 @@
 <x-layout>
-    <section class="px-6 py-8">
-        <span>Deleted</span>
-    </section>
+    <x-setting heading="Delete Post" class="px-6 py-8">
+    </x-setting>
 </x-layout>
