@@ -13,7 +13,7 @@ use App\Http\Controllers\NewsletterController;
 
     Route::post('posts/{post:slug}/comments', [PostCommentController::class, 'store']);
 
-    Route::post('/newsletter', (NewsletterController::class));
+    Route::post('newsletter', (NewsletterController::class));
 
     Route::get('register', [RegisterController::class, 'create'])->middleware('guest');
     Route::post('register', [RegisterController::class, 'store'])->middleware('guest');
@@ -23,7 +23,7 @@ use App\Http\Controllers\NewsletterController;
 
     Route::post('logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-    Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
-    Route::post('/admin/posts', [PostController::class, 'store'])->middleware('admin');
-
     Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware('admin');
+    Route::get('admin/posts/create', [PostController::class, 'create'])->middleware('admin');
+    Route::post('admin/posts', [PostController::class, 'store'])->middleware('admin');
+    Route::get('admin/posts/{post:id}/edit', [PostController::class, 'edit'])->middleware('admin');
