@@ -37,13 +37,14 @@
                     <x-dropdown>
                         <x-slot name="trigger">
                             <button class="underline text-sm font-semibold text-black-600 hover:text-blue-800 focus:outline-none">
-                                Welcome,
+                                Welcome, {{ auth()->user()->name }}
                             </button>
                         </x-slot>
 
-                        <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">All Posts</x-dropdown-item>
-                        <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
-
+                        @if (auth()->user()->name === 'admin')
+                            <x-dropdown-item href="/admin/posts" :active="request()->is('admin/posts')">All Posts</x-dropdown-item>
+                            <x-dropdown-item href="/admin/posts/create" :active="request()->is('admin/posts/create')">New Post</x-dropdown-item>
+                        @endif
                     </x-dropdown>
 
                     <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-3">
