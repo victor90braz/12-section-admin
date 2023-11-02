@@ -42,7 +42,7 @@
                         </x-slot>
 
                         <x-dropdown-item href="/admin/posts/create">New Post</x-dropdown-item>
-                        <x-dropdown-item href="/admin/dashboard">All Posts</x-dropdown-item>
+                        <x-dropdown-item href="/admin/posts">All Posts</x-dropdown-item>
                     </x-dropdown>
 
                     <form action="/logout" method="POST" class="text-xs font-semibold text-blue-500 ml-3">
